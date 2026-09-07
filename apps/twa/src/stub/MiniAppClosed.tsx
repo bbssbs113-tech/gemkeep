@@ -318,7 +318,7 @@ export const MiniAppClosed: FC<{ sdk: TwaAppSdk }> = ({ sdk }) => {
 
                 {hasWallets && (
                     <Accounts margin={false}>
-                        {recoverableAccounts.map(account => (
+                        {recoverableAccounts.map((account: Account) => (
                             <AccountRow
                                 key={account.id}
                                 account={account}

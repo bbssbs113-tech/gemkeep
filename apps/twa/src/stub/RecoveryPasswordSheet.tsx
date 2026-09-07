@@ -105,13 +105,13 @@ export const RecoveryPasswordSheet: FC<{
             handleClose={onClose}
             title={t('twa_show_recovery_phrase')}
         >
-            {afterClose => (
+            {(afterClose: any) => (
                 <Form onSubmit={submit(afterClose)}>
                     <Input
                         id="recovery-password"
                         type="password"
                         value={password}
-                        onChange={value => {
+                        onChange={(value: string) => {
                             setPassword(value);
                             setError(false);
                         }}

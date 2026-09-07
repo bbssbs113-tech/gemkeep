@@ -1,7 +1,10 @@
 import ReactDOM from 'react-dom/client';
+import { ensureTelegramEnv } from './mockEnv';
 import { App } from './App';
 import './i18n';
 import reportWebVitals from './reportWebVitals';
+
+ensureTelegramEnv();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

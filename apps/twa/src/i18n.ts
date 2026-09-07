@@ -1,4 +1,5 @@
-import resources from '@tonkeeper/locales/dist/i18n/default.json';
+import enResources from '@tonkeeper/locales/dist/locales/en.json';
+import ruResources from '@tonkeeper/locales/dist/locales/ru.json';
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
@@ -8,7 +9,14 @@ i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next) // passes i18n down to react-i18next
     .init({
-        resources,
+        resources: {
+            en: {
+                translation: enResources
+            },
+            ru: {
+                translation: ruResources
+            }
+        },
         debug: false,
         lng: 'en', // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
         // you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage

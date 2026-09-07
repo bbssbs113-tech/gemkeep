@@ -70,7 +70,7 @@ export const RecoveryPhrase: FC<{ secret: AccountSecret; onSignOut: () => void }
                 <SkBox>{secret.sk}</SkBox>
             ) : (
                 <WorldsGrid wordsNumber={secret.mnemonic.length as 12 | 24}>
-                    {secret.mnemonic.map((word, index) => (
+                    {secret.mnemonic.map((word: string, index: number) => (
                         <Body1 key={index}>
                             <WorldNumber> {index + 1}.</WorldNumber> {word}{' '}
                         </Body1>

@@ -5,6 +5,17 @@
         "lib": ["ES2020", "DOM", "DOM.Iterable"],
         "module": "ESNext",
         "skipLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@tonkeeper/core/dist/*": ["../../packages/core/src/*"],
+            "@tonkeeper/core/*": ["../../packages/core/src/*"],
+            "@tonkeeper/core": ["../../packages/core/src"],
+            "@tonkeeper/uikit/dist/*": ["../../packages/uikit/src/*"],
+            "@tonkeeper/uikit/*": ["../../packages/uikit/src/*"],
+            "@tonkeeper/uikit": ["../../packages/uikit/src"],
+            "@tonkeeper/locales/*": ["../../packages/locales/*"],
+            "@tonkeeper/locales": ["../../packages/locales"]
+        },
 
         /* Bundler mode */
         "allowSyntheticDefaultImports": true,

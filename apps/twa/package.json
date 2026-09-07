@@ -49,11 +49,11 @@
     "scripts": {
         "dev": "vite",
         "locales": "ts-node ./task/locales",
-        "build": "tsc && yarn locales && vite build",
+        "build": "npm run locales && vite build",
         "generate:twaApi": "rm -fr src/twaApi && docker build -f task/Dockerfile.twaApi . -t twaapisdk && docker run --rm --user=$(id -u):$(id -g) -v \"$PWD\":/local twaapisdk",
         "analyze": "source-map-explorer 'build/static/js/*.js'",
-        "deploy": "yarn build && npx wrangler pages deploy dist/",
-        "build:twa": "yarn build"
+        "deploy": "npm run build && npx wrangler pages deploy dist/",
+        "build:twa": "npm run build"
     },
     "browserslist": {
         "production": [

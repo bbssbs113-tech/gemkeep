@@ -78,7 +78,7 @@ export const SignOutSheet: FC<{
 
     return (
         <Notification isOpen={!!account} handleClose={onClose} title={t('twa_sign_out')}>
-            {afterClose => (
+            {(afterClose: any) => (
                 <Content>
                     <Subtitle>{t('twa_sign_out_subtitle')}</Subtitle>
                     <ConfirmBox>

@@ -1,0 +1,8 @@
+{
+  "name": "Tonkeeper TWA",
+  "description": "Your Telegram Mini App wallet with GemKeep virtual trading simulator on The Open Network.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

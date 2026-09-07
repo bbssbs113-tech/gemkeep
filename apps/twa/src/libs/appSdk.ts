@@ -28,19 +28,90 @@ export class TwaAppSdk extends BaseApp {
 
     constructor(public viewport: Viewport) {
         super(new TwaStorage());
-        const [miniApp] = initMiniApp();
-        this.miniApp = miniApp;
-        this.hapticFeedback = initHapticFeedback();
-        this.launchParams = retrieveLaunchParams();
+        try {
+            const [miniApp] = initMiniApp();
+            this.miniApp = miniApp;
+        } catch {
+            this.miniApp = {
+                isDark: true,
+                supports: () => false,
+                setBgColor: () => {},
+                setHeaderColor: () => {}
+            } as any;
+        }
 
-        const [backButton] = initBackButton();
+        try {
+            this.hapticFeedback = initHapticFeedback();
+        } catch {
+            this.hapticFeedback = {
+                notificationOccurred: () => {},
+                impactOccurred: () => {},
+                selectionChanged: () => {}
+            } as any;
+        }
 
-        this.nativeBackButton = backButton;
+        try {
+            this.launchParams = retrieveLaunchParams();
+        } catch {
+            this.launchParams = {
+                platform: 'tdesktop',
+                version: '7.2',
+                themeParams: {
+                    accentTextColor: '#0088cc',
+                    bgColor: '#10161f',
+                    buttonColor: '#0088cc',
+                    buttonTextColor: '#ffffff',
+                    destructiveTextColor: '#ff3b30',
+                    headerBgColor: '#10161f',
+                    hintColor: '#8a95a5',
+                    linkColor: '#0088cc',
+                    secondaryBgColor: '#1c2430',
+                    sectionBgColor: '#1c2430',
+                    sectionHeaderTextColor: '#8a95a5',
+                    subtitleTextColor: '#8a95a5',
+                    textColor: '#ffffff'
+                }
+            };
+        }
 
-        const [mainButton] = initMainButton();
-        this.mainButton = mainButton;
+        try {
+            const [backButton] = initBackButton();
+            this.nativeBackButton = backButton;
+        } catch {
+            this.nativeBackButton = {
+                show: () => {},
+                hide: () => {},
+                on: () => () => {},
+                off: () => {}
+            } as any;
+        }
 
-        this.utils = initUtils();
+        try {
+            const [mainButton] = initMainButton();
+            this.mainButton = mainButton;
+        } catch {
+            this.mainButton = {
+                isVisible: false,
+                show: () => {},
+                hide: () => {},
+                setText: () => {},
+                enable: () => {},
+                disable: () => {},
+                showProgress: () => {},
+                hideProgress: () => {},
+                on: () => () => {},
+                off: () => {}
+            } as any;
+        }
+
+        try {
+            this.utils = initUtils();
+        } catch {
+            this.utils = {
+                openLink: (url: string) => window.open(url, '_blank'),
+                openTelegramLink: (url: string) => window.open(url, '_blank')
+            } as any;
+        }
     }
 
     copyToClipboard = (value: string, notification?: string) => {

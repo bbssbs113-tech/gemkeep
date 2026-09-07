@@ -1,20 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TonkeeperIcon } from './Icon';
 
-const Block = styled.div`
-    height: 100vh;
+const Spinner = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${props => props.theme.backgroundPage};
-    color: ${props => props.theme.accentBlue};
+    padding: 32px;
+    color: ${props => props.theme.textSecondary || '#8a95a5'};
 `;
 
-export const Loading = React.forwardRef<HTMLDivElement>(({}, ref) => {
-    return (
-        <Block ref={ref}>
-            <TonkeeperIcon loop />
-        </Block>
-    );
-});
+export const Loading: React.FC = () => <Spinner>Loading...</Spinner>;

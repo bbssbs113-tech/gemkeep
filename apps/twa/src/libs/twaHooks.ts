@@ -5,6 +5,7 @@ export const useHandleBackButton = (handleClose: () => void, enabled = true) => 
     const backButton = useBackButton();
 
     useEffect(() => {
+        if (!backButton) return undefined;
         if (!enabled) {
             // Root screen: let Telegram show its default close/minimize control.
             backButton.hide();

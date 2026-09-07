@@ -6,4 +6,6 @@ const devDestDir = `public/locales`;
 
 fs.rmSync(devDestDir, { recursive: true, force: true });
 fs.mkdirSync(devDestDir, { recursive: true });
-fs.cpSync(srcDir, devDestDir, { recursive: true });
+if (fs.existsSync(srcDir)) {
+    fs.cpSync(srcDir, devDestDir, { recursive: true });
+}
