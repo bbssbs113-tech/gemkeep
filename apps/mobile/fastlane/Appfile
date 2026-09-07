@@ -1,2 +1,0 @@
-app_identifier(ENV["BUNDLE_IDENTIFIER"])
-team_id(ENV["APP_STORE_CONNECT_TEAM_ID"])
